@@ -12,7 +12,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
   
   var keys = pokemon.keys();
   for (var i = 0; i < keys.length; i++) {
-     if(keys[i] !=  "image_url"){
+     if(keys[i] !=  "image_url" && keys[i] != "pokemon"){
        $pokemonDiv.append(keys[i] + ": " + pokemon.get(keys[i])).append("<br>");
      }
   }

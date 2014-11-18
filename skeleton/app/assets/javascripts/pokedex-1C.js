@@ -8,10 +8,9 @@ Pokedex.RootView.prototype.createPokemon = function (attrs, callback) {
   var pokemon = new Pokedex.Models.Pokemon(attrs);
   pokemon.save(attrs,{
     success: function(){
-      console.log("saved")
-      console.log(pokemon.toJSON())
       that.addPokemonToList(pokemon);
       that.pokes.add(pokemon);
+      callback && callback.call(that, pokemon);
     },
     error: function(){
       console.log("Fool! man was not meant to play god!")
@@ -25,7 +24,7 @@ Pokedex.RootView.prototype.submitPokemonForm = function (event) {
 
   event.preventDefault();
   var attrs = $(event.currentTarget).serializeJSON();
-  this.createPokemon(attrs);
+  this.createPokemon(attrs, this.renderPokemonDetail);
 };
 
 Pokedex.RootView.prototype.submitListener = function(){
