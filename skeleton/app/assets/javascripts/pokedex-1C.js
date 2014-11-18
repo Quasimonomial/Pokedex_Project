@@ -22,10 +22,10 @@ Pokedex.RootView.prototype.createPokemon = function (attrs, callback) {
 };
 
 Pokedex.RootView.prototype.submitPokemonForm = function (event) {
-  // var pokeId = $(event.currentTarget).attr("data-id");
-  // var pokemon = this.pokes.get(pokeId);
-  // this.renderPokemonDetail(pokemon);
-  console.log(event.currentTarget);
+
+  event.preventDefault();
+  var attrs = $(event.currentTarget).serializeJSON();
+  this.createPokemon(attrs);
 };
 
 Pokedex.RootView.prototype.submitListener = function(){
